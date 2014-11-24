@@ -1,0 +1,46 @@
+#include<Servo.h>
+
+int switchPin = 13;
+int buttonState = 0;
+int buttonPresses = 0;
+int val;
+int angle;
+Servo arm;
+
+
+void setup()
+{
+ pinMode( switchPin, INPUT);
+ arm.attach(8);
+}
+
+void loop()
+{
+  val = digitalRead(switchPin);      // read input value and store it in val
+
+  if (val != buttonState) {          // the button state has changed!
+    if (val == LOW) {                // check if the button is pressed
+      buttonPresses++;               // increment the buttonPresses variable 
+    }
+  }
+  buttonState = val;    // save the new state in our variable
+  
+ if (buttonPresses= 1)
+ {
+  // scan from 0 to 180 degrees
+  for(angle = 0; angle < 180; angle++)  
+  {                                  
+    arm.write(angle);               
+    delay(15);                   
+  } 
+  // now scan back from 180 to 0 degrees
+  for(angle = 180; angle > 0; angle--)    
+  {                                
+    arm.write(angle);           
+    delay(15);       
+  } 
+}
+}
+ 
+ 
+
