@@ -1,0 +1,190 @@
+#include <Servo.h>
+
+const int buttonPin = 13;
+int buttonState = 0;
+
+Servo myservo;  
+int pos;       
+int val;
+int val2;
+int system;
+int i = 0;
+int moves = 0;
+
+void setup()
+{
+  pinMode(buttonPin, INPUT);
+  myservo.attach(9);  
+}
+
+void loop(){
+  myservo.write(0);
+  buttonState=digitalRead(buttonPin);
+  if (buttonState==LOW){
+    if (moves > 10){
+      moves = 0;
+    }  xsw
+    if (moves == 1){
+      normal();            
+    }
+    if (moves == 2){
+      normal();            
+    }
+    if (moves == 3){
+      creep();            
+    }
+    if (moves == 4){
+      jump(); 
+
+    }
+
+    if (moves == 5){
+      normal();
+    }
+    if (moves == 6){
+      normal();
+    }
+    if (moves == 7){
+      normal();
+    }
+    if (moves == 8){
+      gap();
+    }
+    //    if (moves == 9){
+    //      myservo.write(0);
+    //    }
+    if (moves == 10){
+      knock();         
+    }
+    moves++;
+  }
+}
+
+void knock(){
+  for(int pos = 0; pos < 20; pos += 2)  
+  {                                  
+    myservo.write(pos);             
+    delay(60);                      
+  }
+  myservo.write(0);
+  for(int pos = 0; pos < 20; pos += 2)  
+  {                                  
+    myservo.write(pos);             
+    delay(60);                      
+  }
+  myservo.write(0);
+  delay (3000);
+  for(int pos = 0; pos < 90; pos += 3)  
+  {                                  
+    myservo.write(pos);             
+    delay(20);       
+
+  }
+  myservo.write(0);
+}
+
+void normal(){
+  for(int pos = 50; pos < 90; pos += 2)  
+  {                                  
+    myservo.write(pos);             
+    delay(20);                      
+  }
+  myservo.write(0);
+}
+
+
+void creep(){
+
+  for(int pos = 0; pos < 40; pos += 1)  
+  {                                  
+    myservo.write(pos);             
+    delay(20);                      
+  }
+  delay(1000);
+  for(int pos = 40; pos < 50; pos += 2)  
+  {                                  
+    myservo.write(pos);             
+    delay(20);                      
+  }
+  delay(1000);
+  for(int pos = 50; pos < 90; pos += 2)  
+  {                                  
+    myservo.write(pos);             
+    delay(20);                      
+  }
+  myservo.write(0);
+}
+
+
+void jump(){
+  for(int pos = 0; pos < 20; pos += 2)  
+  {                                  
+    myservo.write(pos);             
+    delay(20);                      
+  }
+  delay(1000);
+  for(int pos = 20; pos < 0; pos -= 2)  
+  {                                  
+    myservo.write(pos);             
+    delay(20);                      
+  }
+  for(int pos = 0; pos < 20; pos += 2)  
+  {                                  
+    myservo.write(pos);             
+    delay(20);                      
+  }
+  for(int pos = 0; pos < 20; pos += 2)  
+  {                                  
+    myservo.write(pos);             
+    delay(20);                      
+  }
+
+  for(int pos = 20; pos < 0; pos -= 2)  
+  {                                  
+    myservo.write(pos);             
+    delay(20);                      
+  }
+  for(int pos = 0; pos < 20; pos += 2)  
+  {                                  
+    myservo.write(pos);             
+    delay(20);                      
+  }
+  delay(2000);
+  for(int pos = 20; pos < 90; pos += 3)  
+  {                                  
+    myservo.write(pos);             
+    delay(20);                      
+  }
+  myservo.write(0);
+}
+
+
+void gap(){
+  for(int pos = 0; pos < 30; pos += 3)  
+  {                                  
+    myservo.write(pos);             
+    delay(20);                      
+  }
+
+
+  for(int pos = 30; pos < 0; pos += 3)  
+  {                                  
+    myservo.write(pos);             
+    delay(60);                      
+  }
+  delay(3000);
+
+  for(int pos = 0; pos < 90; pos += 1)  
+  {                                  
+    myservo.write(pos);             
+    delay(20);       
+
+  }
+  myservo.write(0);
+}
+
+
+
+
+
+
