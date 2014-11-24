@@ -1,0 +1,101 @@
+#include <Servo.h>
+
+const int  buttonPin = 13;
+int buttonState = 0;
+
+Servo myservo;  
+int pos;       
+int val;
+int val2;
+int system;
+int i = 0;
+void setup()
+{
+  pinMode(buttonPin, INPUT);
+  myservo.attach(9);  
+}
+
+void loop()
+{
+  val= digitalRead (buttonPin);
+  delay(5);
+  val2 = digitalRead(buttonPin);
+  if (val == val2){
+    buttonState = digitalRead(buttonPin);
+
+  if (i == 0){
+ 
+    system =random(1,4);
+    i++;
+}
+    if (buttonState == LOW) {
+
+      //delay(10);
+      if(system == 1){
+        a1();
+        //delay(30);
+      }
+      if (system == 2){
+        b2();
+        //delay(60);
+      }
+
+      if (system == 3){
+        c3();
+       // delay(70);
+      }
+
+      if (system == 4){
+        d4();
+        //delay(70);
+      }
+
+      else {
+        system == 0;
+        down();     
+      }
+    }
+  }
+}
+
+
+void a1(){
+  delay (10);
+  myservo.write(90); 
+ i==0;  
+}
+
+void b2(){
+  myservo.write(40);
+  delay(40);
+  myservo.write(90);
+   i==0;
+}
+
+void c3(){
+  myservo.write(40);
+  delay(5);
+  myservo.write(80);
+  delay(5);
+  myservo.write(40);
+  delay(40);
+  myservo.write(90);
+   i==0;
+}
+void d4(){
+  myservo.write(80);
+  delay(40);
+  myservo.write(0);
+  delay (10);
+  myservo.write(90);
+   i==0;
+}
+
+void down(){
+
+  myservo.write(0);                                         
+  delay(5);                                       
+}
+
+
+
